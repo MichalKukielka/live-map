@@ -1,0 +1,17 @@
+{
+  "name": "zadanie-react-junior-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "socket.io": "^2.3.0",
+    "lodash": "^4.17.15"
+  }
+}
