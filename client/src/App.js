@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import io from 'socket.io-client';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import Map from './components/Map'
 
 function App() {
+
+  const socket = io('http://localhost:8080');
+  const [cars, setCars] = useState([])
+
+  
+  useEffect(() => {
+
+    socket.on('cars', (event) => { 
+      setCars(event)
+    })
+
+  }, [cars])
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Map cars={cars} style={{
+        height: '500px',
+        width: '300px'
+
+      }} />
     </div>
   );
 }
