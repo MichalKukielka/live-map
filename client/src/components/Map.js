@@ -4,7 +4,7 @@ import Marker from './Marker';
 
 function Map({ cars }) {
 
-  const ApiKey = ''
+  const ApiKey = `${process.env.REACT_APP_API_KEY}`
 
   const [zoom, setZoom] = useState(10);
   const [center, setCenter] = useState([]);
@@ -21,13 +21,9 @@ function Map({ cars }) {
 
   }, [cars])
 
-  console.log(center)
-
-
   return (
     <div style={{ height: '100vh', width: '100%' }}>
       <GoogleMapReact
-        bootstrapURLKeys={{ key: ApiKey }}
         center={center}
         defaultZoom={zoom}
       >

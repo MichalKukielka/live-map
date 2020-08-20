@@ -7,27 +7,18 @@ import Map from './components/Map'
 
 function App() {
 
-  const socket = io('http://localhost:8080');
   const [cars, setCars] = useState([])
 
-  
   useEffect(() => {
-
+    const socket = io('http://localhost:8080');
     socket.on('cars', (event) => { 
       setCars(event)
     })
-
   }, [cars])
-
-
 
   return (
     <div>
-      <Map cars={cars} style={{
-        height: '500px',
-        width: '300px'
-
-      }} />
+      <Map cars={cars} />
     </div>
   );
 }
