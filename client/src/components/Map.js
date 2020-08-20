@@ -4,7 +4,7 @@ import Marker from './Marker';
 
 function Map({ cars }) {
 
-  const ApiKey = 'AIzaSyAgzQkLA0nqJmTUqh9hKT4AGWNIPUk6EaA'
+  const ApiKey = ''
 
   const [zoom, setZoom] = useState(10);
   const [center, setCenter] = useState([]);
