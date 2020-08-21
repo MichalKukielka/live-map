@@ -1,5 +1,5 @@
 import React from 'react'
-import '../css/Marker.css';
+import '../../css/Marker.css';
 
 
 function Marker({ color, name, id }) {
@@ -9,12 +9,10 @@ function Marker({ color, name, id }) {
                 className="pin bounce"
                 style={{ backgroundColor: color, cursor: 'pointer' }}
                 title={name}
-                text={id}
             >
             <h4>{id}</h4>
             </div>
             <div className="pulse" />
-
         </div>
     );
 }

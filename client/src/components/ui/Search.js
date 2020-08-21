@@ -15,7 +15,6 @@ function Search({ getQuery }) {
             value={text}
             onChange={(e) => onChange(e.target.value)}
         />
-
     );
 }
 

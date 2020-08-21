@@ -3,12 +3,13 @@ import io from 'socket.io-client';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import Map from './components/Map';
-import Car from './components/Car';
-import Search from './components/Search';
+import Map from './components/Map/Map';
+import Car from './components/ui/Car';
+import Search from './components/ui/Search';
 
 function App() {
 
+  const [isLoading, setIsLoading] = useState(true)
   const [cars, setCars] = useState([])
   const [query, setQuery] = useState('');
   const [filteredCars, setfilteredCars] = useState([]);
@@ -17,12 +18,12 @@ function App() {
     const socket = io('http://localhost:8080');
     socket.on('cars', (event) => {
       setCars(event)
+      setIsLoading(false)
     })
   }, [cars])
 
 
   useEffect(() => {
-    console.log('QUERY IN APP', query)
     setfilteredCars(
       cars.filter(car => {
         return car.name.toLowerCase().includes(query.toLowerCase())
@@ -30,13 +31,23 @@ function App() {
     )
   }, [query, cars]);
 
+  if (isLoading) {
+    return (
+      <div className="container d-flex justify-content-center bg-light">
+        <div class="spinner-border mx-5 my-5 px-3 py-3" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="container bg-light">
       <div className="row py-2">
         <div className="col-6">
           {
             filteredCars.map(car => (
-              <Car car={car} key={car.id}/>
+              <Car car={car} key={car.id} />
             ))
           }
         </div>

@@ -4,9 +4,6 @@ import Marker from './Marker';
 
 function Map({ cars }) {
 
-  const ApiKey = `${process.env.REACT_APP_API_KEY}`
-
-  const [zoom, setZoom] = useState(10);
   const [center, setCenter] = useState([]);
 
   useEffect(() => {
@@ -25,12 +22,10 @@ function Map({ cars }) {
     <div className="mx-3 rounded" style={{ height: '100vh', width: '100vh' }}>
       <GoogleMapReact
         center={center}
-        defaultZoom={zoom}
-      >
+        defaultZoom={10}>
         {cars.map(car => (
           < Marker key={car.id} lat={car.lat} lng={car.lng} id={car.id} color="#f0ad4e"/>
         ))}
-
       </GoogleMapReact>
     </div>
   );
