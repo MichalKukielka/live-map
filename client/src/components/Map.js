@@ -22,13 +22,13 @@ function Map({ cars }) {
   }, [cars])
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
+    <div className="mx-3 rounded" style={{ height: '100vh', width: '100vh' }}>
       <GoogleMapReact
         center={center}
         defaultZoom={zoom}
       >
         {cars.map(car => (
-          < Marker lat={car.lat} lng={car.lng} id={car.id} color="yellow"/>
+          < Marker key={car.id} lat={car.lat} lng={car.lng} id={car.id} color="#f0ad4e"/>
         ))}
 
       </GoogleMapReact>
