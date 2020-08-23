@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
 import Marker from './Marker';
 
+import { defaultMapCenter } from '../../constants';
+
 function Map({ cars }) {
 
   const [center, setCenter] = useState([]);
@@ -22,6 +24,7 @@ function Map({ cars }) {
     <div className="mx-3 rounded" style={{ height: '100vh', width: '100vh' }}>
       <GoogleMapReact
         center={center}
+        defaultCenter={defaultMapCenter}
         defaultZoom={10}>
         {cars.map(car => (
           < Marker key={car.id} lat={car.lat} lng={car.lng} id={car.id} color="#f0ad4e"/>
